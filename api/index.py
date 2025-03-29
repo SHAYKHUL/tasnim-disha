@@ -1,11 +1,11 @@
-from fastapi import FastAPI
+from flask import Flask, jsonify
 
-app = FastAPI()
+app = Flask(__name__)
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello from FastAPI on Vercel!"}
+@app.route("/")
+def home():
+    return jsonify({"message": "Hello from Flask on Vercel!"})
 
-@app.get("/chat")
+@app.route("/chat", methods=["POST"])
 def chat():
-    return {"message": "Chat endpoint will go here"}
+    return jsonify({"message": "Chat endpoint will go here"})
