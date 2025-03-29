@@ -1,11 +1,11 @@
-from flask import Flask
+from fastapi import FastAPI
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/')
-def home():
-    return 'Hello, World!'
+@app.get("/")
+def read_root():
+    return {"message": "Hello from FastAPI on Vercel!"}
 
-@app.route('/about')
-def about():
-    return 'About'
+@app.get("/chat")
+def chat():
+    return {"message": "Chat endpoint will go here"}
