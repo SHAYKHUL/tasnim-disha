@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import google.generativeai as genai
 
 # Set up logging
@@ -69,8 +69,8 @@ def chat():
 
 @app.route('/')
 def home():
-    """Basic home route."""
-    return "Welcome to the Chatbot API! Use POST /chat to interact with the chatbot."
+    """Serve the front-end chat page."""
+    return render_template("index.html")
 
 if __name__ == "__main__":
     configure_model()
